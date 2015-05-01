@@ -15,3 +15,7 @@ class Event (models.Model):
     date_time=models.CharField(max_length=30)
     tags = models.ManyToManyField(Tag)
 
+    def __str__(self):
+        return self.caption[:20]
+
+
