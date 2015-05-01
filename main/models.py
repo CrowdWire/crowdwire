@@ -9,4 +9,9 @@ class Tag (models.Model):
 
 
 class Event (models.Model):
+    location=models.CharField(max_length=200)
+    picture=models.ImageField(upload_to='photos', blank=False, null=False)
+    caption=models.CharField(max_length=300)
+    date_time=models.CharField(max_length=30)
+    tags = models.ManyToManyField(Tag)
 
