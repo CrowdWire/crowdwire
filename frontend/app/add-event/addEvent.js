@@ -17,7 +17,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             tags: []
         };
 
-
+        //This function keeps $scope.$apply from being run if a digest is still open
         function CheckScopeBeforeApply() {
             if (!$scope.$$phase) {
                 $scope.$apply();

@@ -1,34 +1,33 @@
 /* app css stylesheet */
 
 .menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+    content: "[";
 }
 
 .menu:after {
-  content: "]";
+    content: "]";
 }
 
 .menu > li {
-  display: inline;
+    display: inline;
 }
 
 .menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+    content: "|";
+    padding-right: 0.3em;
 }
 
 .menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+    content: "";
+    padding: 0;
 }
-
 
 /*Added by Me*/
 html, body, .container-fluid, .site-background {
@@ -44,8 +43,8 @@ html, body, .container-fluid, .site-background {
 }
 
 /*.site-background {*/
-    /*background: url("images/dark_embroidery.png");*/
-    /*width: inherit;*/
+/*background: url("images/dark_embroidery.png");*/
+/*width: inherit;*/
 /*}*/
 
 .btn-info {
@@ -58,29 +57,29 @@ html, body, .container-fluid, .site-background {
     margin-bottom: 0px;
 }
 
-.navbar-brand{
-    font-size:22px;
+.navbar-brand {
+    font-size: 22px;
 }
 
 /*.event-card {*/
-    /*text-align: center;*/
-    /*font-size: 18px;*/
-    /*background-color: #3b3b3b;*/
-    /*color: #d5d5d5;*/
-    /*border-radius: 5px;*/
-    /*padding: inherit;*/
-    /*padding-top: 1px;*/
-    /*margin-top: 30px;*/
+/*text-align: center;*/
+/*font-size: 18px;*/
+/*background-color: #3b3b3b;*/
+/*color: #d5d5d5;*/
+/*border-radius: 5px;*/
+/*padding: inherit;*/
+/*padding-top: 1px;*/
+/*margin-top: 30px;*/
 /*}*/
 
 /*.event-card a {*/
-    /*color: #9E9E9E;*/
+/*color: #9E9E9E;*/
 /*}*/
 
 /*.event-card-image {*/
-    /*margin: 0 auto;*/
-    /*width: 300px;*/
-    /*height: 300px;*/
+/*margin: 0 auto;*/
+/*width: 300px;*/
+/*height: 300px;*/
 /*}*/
 
 .img-responsive {

@@ -6,7 +6,6 @@ angular.module('myApp', [
     'myApp.events',
     'myApp.eventDetail',
     'myApp.addEvent',
-    //'myApp.view2',
     'myApp.version',
     'restangular',
 ]).

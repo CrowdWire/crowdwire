@@ -14,9 +14,9 @@ angular.module('myApp.eventDetail', ['ngRoute'])
         $scope.eventId = $routeParams.eventId
 
         Restangular.one('events', $scope.eventId).customGET()
-            .then(function(event){
+            .then(function (event) {
                 $scope.event = event;
-            }, function() {
+            }, function () {
                 alert("Something has gone horribly wrong...")
             });
 

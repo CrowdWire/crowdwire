@@ -1,8 +1,19 @@
 from rest_framework import serializers
 from models import *
+from datetime import datetime
 
 
 class Base64ImageField(serializers.ImageField):
+    """
+    A Django REST framework field for handling image-uploads through raw post data.
+    It uses base64 for encoding and decoding the contents of the file.
+
+    Heavily based on
+    https://github.com/tomchristie/django-rest-framework/pull/1268
+
+    Updated for Django REST framework 3.
+    """
+
     def to_internal_value(self, data):
         from django.core.files.base import ContentFile
         import base64
@@ -15,7 +26,7 @@ class Base64ImageField(serializers.ImageField):
             if 'data:' in data and ';base64,' in data:  # Break out the header from the base64 content
                 header, data = data.split(';base64,')
 
-    # Try to decode the file. Return validation error if it fails.
+                # Try to decode the file. Return validation error if it fails.
             try:
                 decoded_file = base64.b64decode(data)
             except TypeError:
@@ -47,8 +58,8 @@ class TagsSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     tags = TagsSerializer(many=True)
-    # So that we don't get an encoding error, we need to serialize the image file:
-    picture = Base64ImageField(max_length=None, use_url=True)
+    picture = Base64ImageField(max_length=None, use_url=True)  # So that we don't get an encoding error
+    submitted_date_time = datetime.now()
 
     class Meta:
         model = Event

@@ -9,12 +9,12 @@ angular.module('myApp.events', ['ngRoute'])
         });
     }])
 
-    .controller('EventsCtrl', ['$scope','Restangular', function ($scope, Restangular) {
+    .controller('EventsCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
 
         //i.e http://localhost:8001/events
         Restangular.all('events').getList()
-            .then(function(events){
+            .then(function (events) {
                 $scope.events = events;
             });
     }]);
