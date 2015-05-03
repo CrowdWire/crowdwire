@@ -1,0 +1,14 @@
+
+<h1>Event:</h1>
+<h3><a href="/app/#/events/{{ event.id }}">{{ event.caption }}</a></h3>
+<img width="200"
+     ng-src="{{ event.picture }}">
+<p>{{ event.caption }}</p>
+
+<h1>Where:</h1>
+<p>{{ event.location }}</p>
+<h1>Tags:</h1>
+<li ng-repeat="tag in event.tags">{{ tag.name }}</li>
+
+
+

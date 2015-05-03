@@ -1,0 +1,29 @@
+<!--<form class="navbar-form navbar-left" role="search">-->
+    <!--<div class="form-group">-->
+        <!--<input type="text" ng-model="searchText" placeholder="Search events">-->
+    <!--</div>-->
+<!--</form>-->
+
+        <!--<ul>-->
+            <!--<a href="#/events/{{ event.id }}">{{ event.caption }}</a>-->
+        <!--</ul>-->
+
+
+
+<h2>Search:</h2>
+<label>By Caption: <input ng-model="event.caption"></label> <br>
+<label>By Location: <input ng-model="event.location"></label><br>
+<label>By Tags: <input ng-model="event.tags"></label><br>
+<table id="searchObjResults">
+    <tr>
+        <th>Caption</th>
+        <th>Tags</th>
+    </tr>
+    <!--Could also just use 'event' instead of 'eventObj'.  This is for educational purposes.... :)-->
+    <tr ng-repeat="eventObj in events | filter:event:strict">
+        <td><a href="#/events/{{ eventObj.id }}">{{eventObj.caption}}</a></td>
+        <td><a href="#/events/{{ eventObj.id }}">{{eventObj.tags}}</a></td>
+    </tr>
+</table>
+
+<!--<li ng-repeat="tag in event.tags">{{ tag.name }}</li>-->
