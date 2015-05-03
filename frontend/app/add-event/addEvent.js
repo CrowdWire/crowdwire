@@ -39,7 +39,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 reader = new FileReader();
             reader.onload = function (e) {
                 $scope.event.picture = 'data:image/png;base64,' + btoa(e.target.result);
-                $scope.$apply();
+                CheckScopeBeforeApply();
             };
             reader.readAsBinaryString(file);
         };
@@ -49,7 +49,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             Restangular.all('add-event').customPOST($scope.event).then(function () {
                 alert("You successfully added the event!");
                 document.getElementById('file').value = null;
-                CheckScopeBeforeApply
+                CheckScopeBeforeApply();
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
 
