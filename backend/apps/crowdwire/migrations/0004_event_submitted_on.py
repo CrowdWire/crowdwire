@@ -9,7 +9,7 @@ from django.utils.timezone import utc
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0003_remove_event_date_time'),
+        ('backend', '0003_remove_event_date_time'),
     ]
 
     operations = [

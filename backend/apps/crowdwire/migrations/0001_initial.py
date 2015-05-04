@@ -30,6 +30,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='tags',
-            field=models.ManyToManyField(to='main.Tag'),
+            field=models.ManyToManyField(to='backend.Tag'),
         ),
     ]

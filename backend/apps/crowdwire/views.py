@@ -1,5 +1,6 @@
 from rest_framework import generics
-from serializers import *
+
+from backend.apps.crowdwire.serializers import *
 
 
 """

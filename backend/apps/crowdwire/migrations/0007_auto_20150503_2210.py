@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0001_initial'),
+        ('backend', '0006_auto_20150503_2202'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='event',
-            name='picture',
-            field=models.ImageField(null=True, upload_to=b'photos', blank=True),
+            name='submitted_date_time',
+            field=models.DateTimeField(verbose_name=b'date submitted'),
         ),
     ]

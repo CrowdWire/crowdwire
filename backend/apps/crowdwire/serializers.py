@@ -1,6 +1,8 @@
-from rest_framework import serializers
-from models import *
 from datetime import datetime
+
+from rest_framework import serializers
+
+from backend.apps.crowdwire.models import *
 
 
 class Base64ImageField(serializers.ImageField):
@@ -88,7 +90,6 @@ class EventSerializer(serializers.ModelSerializer):
             tag, created = Tag.objects.get_or_create(name=tag['name'])
             event.tags.add(tag)
         return event
-
 
     def update(self, instance, validated_data):
         hashtags = validated_data.pop('tags')

@@ -7,13 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0004_event_submitted_on'),
+        ('backend', '0002_auto_20150503_0246'),
     ]
 
     operations = [
-        migrations.RenameField(
+        migrations.RemoveField(
             model_name='event',
-            old_name='submitted_on',
-            new_name='submitted_date_time',
+            name='date_time',
         ),
     ]

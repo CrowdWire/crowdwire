@@ -8,7 +8,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0005_auto_20150503_2148'),
+        ('backend', '0007_auto_20150503_2210'),
     ]
 
     operations = [
