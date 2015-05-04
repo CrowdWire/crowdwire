@@ -1,14 +1,14 @@
 from django.db import models
 
 
-class Tag (models.Model):
+class Tag(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
 
 
-class Event (models.Model):
+class Event(models.Model):
     location = models.CharField(max_length=200)
     picture = models.ImageField(upload_to='photos', blank=False, null=False)
     caption = models.CharField(max_length=300)
