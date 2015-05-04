@@ -51,9 +51,23 @@ class Base64ImageField(serializers.ImageField):
         return extension
 
 
+"""
+ Create the serializer for Tags. The Meta class is inheriting from serializers.ModelSerializer, and adding
+ a model to it (It's basically saying "serialize the Tag model in addition to whatever else you're doing").
+  """
+
+
 class TagsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
+
+
+"""
+ Create the serializer for Events. The Meta class is inheriting from serializers.ModelSerializer, and adding
+ a model to it (It's basically saying "serialize the Event model in addition to whatever else you're doing").
+ The tags attribute is necessary so that each serialized event has serialized tags within it. The picture data
+ is serialized via theBase64ImageField above, and the submitted_dat_time here is cast to the current datetime.
+  """
 
 
 class EventSerializer(serializers.ModelSerializer):
@@ -64,6 +78,9 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
 
+    """
+    CRUD functionality for the serialized data
+    """
     def create(self, validated_data):
         hashtags = validated_data.pop('tags')
         event = Event.objects.create(**validated_data)
