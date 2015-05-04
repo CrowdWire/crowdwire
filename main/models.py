@@ -12,9 +12,10 @@ class Tag(models.Model):
 class Event(models.Model):
     tags = models.ManyToManyField(Tag)
     location = models.CharField(max_length=200)
+    # latitude = models.DecimalField(max_digits=13, decimal_places=10)
+    # longitude = models.DecimalField(max_digits=13, decimal_places=10)
     picture = models.ImageField(upload_to='photos', blank=True, null=True)
     caption = models.CharField(max_length=300)
-    #  date_time = models.CharField(max_length=30)
     submitted_date_time = models.DateTimeField('date submitted', default=timezone.now)
 
 
