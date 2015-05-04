@@ -1,0 +1,16 @@
+<h2>Search:</h2>
+<label>By Caption: <input ng-model="event.caption"></label> <br>
+<label>By Location: <input ng-model="event.location"></label><br>
+<label>By Tags: <input ng-model="event.tags"></label><br>
+<table id="searchObjResults">
+    <tr>
+        <th>Caption</th>
+        <th>Tags</th>
+    </tr>
+    <!--Could also just use 'event' instead of 'eventObj'.  This is for educational purposes, and to avoid confusion.... -->
+
+    <tr ng-repeat="eventObj in events | filter:event:strict">
+        <td><a href="#/events/{{ eventObj.id }}">{{eventObj.caption}}</a></td>
+        <td ng-repeat="e in eventObj.tags"><a href="#/events/{{ eventObj.id }}">{{e.name}}</a></td>
+    </tr>
+</table>
