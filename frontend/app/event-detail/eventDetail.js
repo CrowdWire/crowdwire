@@ -3,7 +3,7 @@
 angular.module('myApp.eventDetail', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        //The below puts eventId as a variable on routeParams
+        //The below puts eventId as a variable on routeParams, and loads the page with the controller
         $routeProvider.when('/events/:eventId', {
             templateUrl: 'event-detail/event-detail.html',
             controller: 'EventDetailCtrl'
