@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My AngularJS App</title>
-    <meta name="description" content="">
+    <meta name="CrowdWire" content="A information hub that combines local news into a topographical layout">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
     <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">-->
@@ -21,15 +21,18 @@
 </head>
 
 <body>
+<div ng-view></div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6033.266151640817!2d-73.15931942470608!3d40.87992589868998!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1430608695451"
+        width="600" height="450" frameborder="0" style="border:0">
+</iframe>
+
     <div id ="header">
             <h1>Crowdwire</h1>
         <div><!--This is the div for the title bar/buttons-->
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Section 1</a></li>
-                <li><a href="#">Section 2</a></li>
-                <li><a href="#">Section 3</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Publish</a></li>
+                <li><a href="#">Contact Us</a></li>
             </ul>
         </div>
 </div>
@@ -68,10 +71,6 @@
 
 
 placeholder
-<div ng-view></div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6033.266151640817!2d-73.15931942470608!3d40.87992589868998!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1430608695451"
-        width="600" height="450" frameborder="0" style="border:0">
-</iframe>
 
 
 <!-- In production use:
