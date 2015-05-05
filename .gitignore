@@ -1,5 +1,5 @@
 .idea/
-db.sqlite3
+backend/db.sqlite3
 *.pyc
 photos/
 *.orig
