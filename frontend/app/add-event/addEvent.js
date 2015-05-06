@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.addEvent', ['ngRoute'])
+angular.module('myApp.addEvent', ['ngRoute', 'uiGmapgoogle-maps'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -10,6 +10,11 @@ angular.module('myApp.addEvent', ['ngRoute'])
         });
     }])
 
+    .config(['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
+        GoogleMapApiProviders.configure({
+            china: true
+        });
+    }])
 
     .controller('AddEventCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
@@ -57,40 +62,6 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 alert("There was a problem submitting the event...")
             });
         };
-         //Initialize the map, center it and set the zoom level.
 
-        var myLatlng = new google.maps.LatLng(45.00000,45.00000);
-        var mapOptions = {
-            zoom: 7,
-            center: myLatlng
-        };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-
-
-        google.maps.event.addListener(map, 'click', function (e) {
-            placeMarker(e.latLng, map);
-        });
-
-
-    //Create the pin marker itself, and set its characteristics
-    function placeMarker(position, map) {
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            draggable:true
-        });
-
-        //Add an event listener on the pin marker.  When clicked, spit out the lat and lng data
-        google.maps.event.addListener(marker, "click", function (event) {
-            var latitude = event.latLng.lat();
-            var longitude = event.latLng.lng();
-            alert(latitude + ', ' + longitude);
-        });
-        map.panTo(position);
-    }
-
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
+        $scope.map = {center: { latitude: 45, longitude: -73}, zoom: 8};
     }]);
