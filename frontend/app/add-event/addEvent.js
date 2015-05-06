@@ -1,18 +1,12 @@
 'use strict';
 
-angular.module('myApp.addEvent', ['ngRoute', 'uiGmapgoogle-maps'])
+angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/add-event', {
             templateUrl: 'add-event/add-event.html',
             controller: 'AddEventCtrl'
-        });
-    }])
-
-    .config(['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
-        GoogleMapApiProviders.configure({
-            china: true
         });
     }])
 
@@ -54,7 +48,7 @@ angular.module('myApp.addEvent', ['ngRoute', 'uiGmapgoogle-maps'])
             Restangular.all('add-event').customPOST($scope.event).then(function () {
                 alert("You successfully added the event!");
                 document.getElementById('file').value = null;
-                CheckScopeBeforeApply();
+                //CheckScopeBeforeApply();
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
 
@@ -63,5 +57,4 @@ angular.module('myApp.addEvent', ['ngRoute', 'uiGmapgoogle-maps'])
             });
         };
 
-        $scope.map = {center: { latitude: 45, longitude: -73}, zoom: 8};
     }]);

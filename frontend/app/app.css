@@ -86,7 +86,12 @@ li {
     padding: 5px;
 }
 
-.map-container {
+/*div .form-group{*/
+    /*position: relative;*/
+/*}*/
+
+
+#gmaps{
     height: 400px;
-    width: 400px;
 }
+
