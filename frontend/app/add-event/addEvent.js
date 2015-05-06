@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.addEvent', ['ngRoute'])
+angular.module('myApp.addEvent', ['ngRoute', 'uiGmapgoogle-maps'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -10,6 +10,11 @@ angular.module('myApp.addEvent', ['ngRoute'])
         });
     }])
 
+    .config(['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
+        GoogleMapApiProviders.configure({
+            china: true
+        });
+    }])
 
     .controller('AddEventCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
@@ -22,7 +27,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             if (!$scope.$$phase) {
                 $scope.$apply();
             }
-        }
+        };
 
 
         $scope.addTag = function (tagText) {
@@ -58,24 +63,5 @@ angular.module('myApp.addEvent', ['ngRoute'])
             });
         };
 
+        $scope.map = {center: { latitude: 45, longitude: -73}, zoom: 8};
     }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
