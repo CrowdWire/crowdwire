@@ -22,7 +22,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             if (!$scope.$$phase) {
                 $scope.$apply();
             }
-        };
+        }
 
 
         $scope.addTag = function (tagText) {
@@ -58,5 +58,24 @@ angular.module('myApp.addEvent', ['ngRoute'])
             });
         };
 
-
     }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
