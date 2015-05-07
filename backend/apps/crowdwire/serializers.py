@@ -2,7 +2,7 @@ from datetime import datetime
 
 from rest_framework import serializers
 
-from backend.apps.crowdwire.models import *
+from models import *
 
 
 class Base64ImageField(serializers.ImageField):
@@ -91,18 +91,18 @@ class EventSerializer(serializers.ModelSerializer):
             event.tags.add(tag)
         return event
 
-    def update(self, instance, validated_data):
-        hashtags = validated_data.pop('tags')
-        instance.name = validated_data.get('name', instance.name)  # Basically, rename the tag name
-        instance.caption = validated_data.get('caption', instance.caption)
-        instance.location = validated_data.get('location', instance.location)
-        instance.picture = validated_data.get('picture', instance.picture)
-
-        tags_list = []
-        for tag in hashtags:
-            tag, created = Tag.objects.get_or_create(name=tag["name"])
-            # Try to get tag object from DB...if it doesn't exist, create it and append it to the tag list
-            tags_list.append(tag)
-        instance.tags = tags_list
-        instance.save()
-        return instance
+    # def update(self, instance, validated_data):
+    #     hashtags = validated_data.pop('tags')
+    #     instance.name = validated_data.get('name', instance.name)  # Basically, rename the tag name
+    #     instance.caption = validated_data.get('caption', instance.caption)
+    #     instance.location = validated_data.get('location', instance.location)
+    #     instance.picture = validated_data.get('picture', instance.picture)
+    #
+    #     tags_list = []
+    #     for tag in hashtags:
+    #         tag, created = Tag.objects.get_or_create(name=tag["name"])
+    #         # Try to get tag object from DB...if it doesn't exist, create it and append it to the tag list
+    #         tags_list.append(tag)
+    #     instance.tags = tags_list
+    #     instance.save()
+    #     return instance

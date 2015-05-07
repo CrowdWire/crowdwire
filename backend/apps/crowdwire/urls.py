@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.conf import settings
 
-from backend.apps.crowdwire.views import EventList, EventDetail, AddEvent
+from views import EventList, EventDetail, AddEvent
 
 
 # URL endpoints for the feed, individual events by ID, adding events and the media root where the photos are stored
