@@ -22,13 +22,11 @@
 </head>
 
 <body>
-<div ng-view>
 
-</div>
 
 
     <div id ="header">
-            <h1>Crowdwire</h1>
+            <img src=""
         <div><!--This is the div for the title bar/buttons-->
             <ul>
                 <li><a href="#">Home</a></li>
@@ -60,18 +58,23 @@
 
         <div class="article col-sm-4">
             <p>Photo</p>
-                <br>
-                    <!--the input type should allow for a input field-->
-                    <input type="text" name="event">
-                <br>
-        </div>
+                <form action="http://www.example.com/upload.jpg" method="post">
+                    <p>Upload your media here in XXX format</p>
+                    <input type="file" name="user-media" /><br />
+                    <input type="submit" value ="Upload" />
+                </form>
 
+
+        </div>
+            <div ng-view>
+
+            </div>
         <div id="footer" class="col-sm-12">
             <p>&copy; Copyright 2015</p>
         </div>
 
 
-placeholder
+
 
 
 <!-- In production use:
