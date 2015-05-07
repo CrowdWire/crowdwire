@@ -1,11 +1,52 @@
 /* app css stylesheet */
 
-* {
-    font-family: Arial, Helvetica, sans-serif;
-    /*need to go and choose the fonts, this was just a random example of code*/
-    color: #665544;
+body {
     text-align: center;
 }
+
+header {
+    height: 210px;
+    background: url(../../../app/media/small codewire pin.jpg);
+    background-size:contain;
+    width:100%;
+    z-index: 10;
+    position: fixed;
+
+}
+
+
+#banner {
+
+    width: 100%;
+    height: 500px;
+    position: fixed;
+    top: 100px;
+    background: #707070;
+}
+
+
+#content {
+    width: 100%;
+    position: relative;
+    top: 400px;
+    background: #ebebeb;
+    height: 1500px;
+}
+
+/*this header class should be used for the header and drop logo...Trevor*/
+
+.header {
+    background-image: url();
+    padding: 0px 0px 0px 0px;
+    height: 100px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 50;
+}
+
+/*end of the new  parallax addition*/
+
 
 .menu {
     list-style: none;
@@ -36,7 +77,11 @@
     padding: 0;
 }
 
-/*Added by Me*/
+li {
+    display: inline;
+    padding: 5px;
+}
+
 html, body, .container-fluid, .site-background {
     min-height: 100%;
     height: 100%;
@@ -67,26 +112,35 @@ html, body, .container-fluid, .site-background {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+}.
+
+#location_grid. {
+    background: #efefef;
+    TOP:300px;LEFT:480px
+    margin-top: 20 px
+    padding: 10px 0px 5px 0x;
+ }
+
+#description_grid. {
+    background: #efefef;
+    TOP:500px;LEFT:480px
+    margin-top: 20 px
+    padding: 10px 0px 5px 0x;
+}
+
+#feature_grid. {
+    background: #efefef;
+    TOP:700px;LEFT:480px
+    margin-top: 20 px
+    padding: 10px 0px 5px 0x;
+}
+
+#photo_grid. {
+    background: #efefef;
+    TOP:900px;LEFT:480px
+    margin-top: 20 px
+    padding: 10px 0px 5px 0x;
 }
 
 
 
-#nav, #feature, .article, #footer {
-    background-color: #efefef;
-    margin-top: 20px;
-    padding: 10px 0 5px 0;
-}
-
-#feature, .article {
-    height: 100px;
-}
-
-li {
-    display: inline;
-    padding: 5px;
-}
-
-.map-container {
-    height: 400px;
-    width: 400px;
-}
