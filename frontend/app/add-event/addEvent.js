@@ -39,11 +39,13 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
                 //Add an event listener on the pin marker.  When clicked, spit out the lat and lng data
                 //Put latitude and longitude on scope....FYI, "event" here is javascript speak!
-                google.maps.event.addListener(marker, "click", function (event) {
+                //Also, the dragend is an alternative to click...the event occurs where the pin drops!!!
+                google.maps.event.addListener(marker, "dragend", function (event) {
                     var latitude = event.latLng.lat();
                     var longitude = event.latLng.lng();
                     $scope.latitude = latitude;
                     $scope.longitude = longitude;
+                    alert($scope.latitude + ', ' + $scope.longitude);
                 });
                 map.panTo(position);
             }
@@ -76,7 +78,6 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addLocation = function() {
-            alert($scope.event.location)
             $scope.event.location = ($scope.latitude + ', ' + $scope.longitude);
             CheckScopeBeforeApply();
         };
@@ -84,7 +85,6 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
         $scope.addTag = function (tagText) {
             if (tagText != null) {
-                //alert($scope.latitude );//DEPENDENT UPON CLICKING THE MARKER FIRST!!!
                 var hashtag = {name: tagText};
                 $scope.event.tags.push(hashtag);
                 $scope.tagText = null
@@ -105,13 +105,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
         $scope.addEvent = function () {
             Restangular.all('add-event').customPOST($scope.event).then(function () {
-                alert("You successfully added the event!");
+                alert("You successfully added the event!" + " at " + $scope.event.location);
                 document.getElementById('file').value = null;
                 CheckScopeBeforeApply();
                 $scope.event.location = null;
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
-
             }, function () {
                 alert("There was a problem submitting the event...")
             });
