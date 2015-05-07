@@ -69,8 +69,6 @@ html, body, .container-fluid, .site-background {
     border-radius: 10px;
 }
 
-
-
 #nav, #feature, .article, #footer {
     background-color: #efefef;
     margin-top: 20px;
@@ -86,12 +84,7 @@ li {
     padding: 5px;
 }
 
-/*div .form-group{*/
-    /*position: relative;*/
-/*}*/
-
-
-#gmaps{
+#gmaps {
     height: 400px;
 }
 

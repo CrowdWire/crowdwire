@@ -1,39 +1,36 @@
-<div>
-    <div class="form-group">
-        <label>Location:</label>
-        <br>
-        <textarea class="form-control" ng-model="event.location"></textarea>
-    </div>
-
-
-    <div class="form-group">
-        <label>Caption:</label>
-        <br>
-        <textarea class="form-control" ng-model="event.caption"></textarea>
-    </div>
-
-
-    <div class="form-group">
-        <label>Tags:</label>
-        <br>
-        <input class="form-control" ng-model="tagText">
-    </div>
-    <button ng-click="addTag(tagText)" class="btn btn-xs btn-info">Add hashtags</button>
-
-
+<div class="form-group" ng-model="event.location">
+    <label>Location:</label>
     <br>
-    <img class="img-responsive" ng-src="{{ event.picture }}">
-    <div class="form-group">
-        <label>Event Photo:</label>
-        <br>
-        <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
-               onchange="angular.element(this).scope().addPhoto()"/>
-    </div>
-
-
-    <br>
-    <button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-right">Submit to
-        Journal
-    </button>
-
+    <input type="button" onclick="angular.element(this).scope().addLocation()"/>Set Location
 </div>
+
+
+<div class="form-group">
+    <label>Caption:</label>
+    <br>
+    <textarea class="form-control" ng-model="event.caption"></textarea>
+</div>
+
+
+<div class="form-group">
+    <label>Tags:</label>
+    <br>
+    <input class="form-control" ng-model="tagText">
+</div>
+<button ng-click="addTag(tagText)" class="btn btn-xs btn-info">Add hashtags</button>
+
+
+<br>
+<img class="img-responsive" ng-src="{{ event.picture }}">
+<div class="form-group">
+    <label>Event Photo:</label>
+    <br>
+    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+           onchange="angular.element(this).scope().addPhoto()"/>
+</div>
+
+
+<br>
+<button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-right">Submit to
+    Journal
+</button>
