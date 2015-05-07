@@ -78,7 +78,9 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addLocation = function() {
-            $scope.event.location = ($scope.latitude + ', ' + $scope.longitude);
+            //$scope.event.location = ($scope.latitude + ', ' + $scope.longitude);
+            $scope.event.latitude = $scope.latitude;
+            $scope.event.longitude = $scope.longitude;
             CheckScopeBeforeApply();
         };
 
