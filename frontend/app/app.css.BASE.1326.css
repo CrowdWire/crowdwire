@@ -1,0 +1,92 @@
+/* app css stylesheet */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    /*need to go and choose the fonts, this was just a random example of code*/
+    color: #665544;
+    text-align: center;
+}
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.menu:before {
+    content: "[";
+}
+
+.menu:after {
+    content: "]";
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+    content: "";
+    padding: 0;
+}
+
+/*Added by Me*/
+html, body, .container-fluid, .site-background {
+    min-height: 100%;
+    height: 100%;
+    font-size: 18px;
+}
+
+.site-foreground {
+    background-color: #d5d5d5;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #68A6F1;
+    border-color: #46b8da;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.navbar-brand {
+    font-size: 22px;
+}
+
+.img-responsive {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+
+
+#nav, #feature, .article, #footer {
+    background-color: #efefef;
+    margin-top: 20px;
+    padding: 10px 0 5px 0;
+}
+
+#feature, .article {
+    height: 100px;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+.map-container {
+    height: 400px;
+    width: 400px;
+}
