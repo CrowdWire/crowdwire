@@ -27,7 +27,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addLocation = function () {
-            //$scope.event.location = ($scope.latitude + ', ' + $scope.longitude);
+            alert ("Location set at " + $scope.latitude + ', ' + $scope.longitude);
             $scope.event.latitude = $scope.latitude;
             $scope.event.longitude = $scope.longitude;
             CheckScopeBeforeApply();
@@ -85,6 +85,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 };
                 var map = new google.maps.Map(document.getElementById('gmaps'),
                     mapOptions);
+
 
 
                 google.maps.event.addListener(map, 'click', function (e) {
@@ -146,9 +147,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 map.panTo(position);
             }
 
-
             google.maps.event.addDomListener(window, 'load', initialize);
-
 
         };
 
