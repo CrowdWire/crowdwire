@@ -73,45 +73,49 @@ angular.module('myApp.addEvent', ['ngRoute'])
     directive('myMap',  ['Restangular', function (Restangular) {
         // directive link function
 
-        var link = function ($scope, element, attrs) {
-            var otherMarkers = [];
+        var link = function ($scope) {
+            var existingMarkers = [];//List of markers for existing events
 
             function initialize() {
 
-                var myLatlng = new google.maps.LatLng(45.00000, 45.00000);
+                var myLatlng = new google.maps.LatLng(40.7841809093, -73.9640808105);
                 var mapOptions = {
                     zoom: 7,
                     center: myLatlng
                 };
+                //Create a new map with .css div id=gmaps and the mapOptions above
                 var map = new google.maps.Map(document.getElementById('gmaps'),
                     mapOptions);
 
 
+                // Restangular call to grab the location data for all existing events
+                Restangular.all('events').getList()
+                    .then(function (events) {
+                        events.forEach(function(ev) {
+                               setMarker(map, new google.maps.LatLng(ev.latitude, ev.longitude), ev.caption);
+                            })
+                    });
 
+                // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
                 google.maps.event.addListener(map, 'click', function (e) {
                     placeMarker(e.latLng, map);
-
-                    setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London');
-                    setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam');
-                    setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris');
-
                 });
             }
 
-
+            // setMarker function to create the marker for existing events
             function setMarker(map, position, content) {
                 var infoWindow;
-                var markerOthers = new google.maps.Marker({
+                var markersExisting = new google.maps.Marker({
                     position: position,
                     map: map,
-                    icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
 
 
-                otherMarkers.push(markerOthers); // add marker to array
+                existingMarkers.push(markersExisting); // add marker to array of existing event markers
 
-                //FYI, "event" here is javascript speak!
-                google.maps.event.addListener(markerOthers, 'click', function () {
+                //FYI, "event" here in the google.maps.event method call is javascript speak!
+                google.maps.event.addListener(markersExisting, 'click', function () {
                     // close window if not undefined
                     if (infoWindow !== void 0) {
                         infoWindow.close();
@@ -121,14 +125,14 @@ angular.module('myApp.addEvent', ['ngRoute'])
                         content: content
                     };
                     infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-                    infoWindow.open(map, markerOthers);
+                    infoWindow.open(map, markersExisting);
                 });
             }
 
 
             //Create the pin marker itself, and set its characteristics
             function placeMarker(position, map) {
-                var marker = new google.maps.Marker({
+                var addEventMarker = new google.maps.Marker({
                     position: position,
                     map: map,
                     draggable: true
@@ -137,7 +141,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 //Add an event listener on the pin marker.  When clicked, spit out the lat and lng data
                 //Put latitude and longitude on scope....FYI, "event" here is javascript speak!
                 //Also, the dragend is an alternative to click...the event occurs where the pin drops!!!
-                google.maps.event.addListener(marker, "dragend", function (event) {
+                google.maps.event.addListener(addEventMarker, "dragend", function (event) {
                     var latitude = event.latLng.lat();
                     var longitude = event.latLng.lng();
                     $scope.latitude = latitude;
@@ -150,7 +154,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             google.maps.event.addDomListener(window, 'load', initialize);
 
         };
-
+        //Return the map and set the css id selector to #gmaps.
         return {
             //restrict: 'A',
             template: '<div id="gmaps"></div>',
