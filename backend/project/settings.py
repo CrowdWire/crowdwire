@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend',
+    'apps.crowdwire',
     'rest_framework',
     'corsheaders',
 )
@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'backend.project.urls'
+ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
     {

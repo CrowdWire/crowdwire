@@ -5,7 +5,7 @@
 <p>{{ event.caption }}</p>
 
 <h1>Where:</h1>
-<p>{{ event.location }}</p>
+<p>{{ event.latitude }}, {{ event.longitude }}</p>
 <h1>Tags:</h1>
 <li ng-repeat="tag in event.tags">{{ tag.name }}</li>
 

@@ -112,6 +112,7 @@ html, body, .container-fluid, .site-background {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+<<<<<<< HEAD
 }.
 
 #location_grid. {
@@ -126,6 +127,14 @@ html, body, .container-fluid, .site-background {
     TOP:500px;LEFT:480px
     margin-top: 20 px
     padding: 10px 0px 5px 0x;
+=======
+}
+
+#nav, #feature, .article, #footer {
+    background-color: #efefef;
+    margin-top: 20px;
+    padding: 10px 0 5px 0;
+>>>>>>> dev
 }
 
 #feature_grid. {
@@ -142,9 +151,11 @@ html, body, .container-fluid, .site-background {
     padding: 10px 0px 5px 0x;
 }
 
+<<<<<<< HEAD
 
-
+=======
 #gmaps {
     height: 400px;
 }
+>>>>>>> dev
 
