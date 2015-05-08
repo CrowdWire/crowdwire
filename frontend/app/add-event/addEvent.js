@@ -89,7 +89,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
                 google.maps.event.addListener(map, 'click', function (e) {
                     placeMarker(e.latLng, map);
-
+                    //We want to use a Restangular call to pull down the lat/long and setMarker for each event.
                     setMarker(map, new google.maps.LatLng(51.508515, -0.125487), 'London');
                     setMarker(map, new google.maps.LatLng(52.370216, 4.895168), 'Amsterdam');
                     setMarker(map, new google.maps.LatLng(48.856614, 2.352222), 'Paris');
