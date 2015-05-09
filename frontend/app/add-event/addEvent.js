@@ -25,7 +25,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             }
         }
 
-git
+
         $scope.addLocation = function () {
             alert("Location set at " + $scope.latitude + ', ' + $scope.longitude);
             $scope.event.latitude = $scope.latitude;
