@@ -6,7 +6,7 @@ body {
 
 header {
     height: 210px;
-    background: url(../../../app/media/small codewire pin.jpg);
+    background: url(media);
     background-size:contain;
     width:100%;
     z-index: 10;
@@ -36,7 +36,7 @@ header {
 /*this header class should be used for the header and drop logo...Trevor*/
 
 .header {
-    background-image: url();
+    /*background-image: url();*/
     padding: 0px 0px 0px 0px;
     height: 100px;
     position: fixed;
@@ -112,30 +112,30 @@ html, body, .container-fluid, .site-background {
     width: 150px;
     height: 150px;
     border-radius: 10px;
-}.
+}
 
-#location_grid. {
+#location_grid {
     background: #efefef;
     TOP:300px;LEFT:480px
     margin-top: 20 px
     padding: 10px 0px 5px 0x;
  }
 
-#description_grid. {
+#description_grid {
     background: #efefef;
     TOP:500px;LEFT:480px
     margin-top: 20 px
     padding: 10px 0px 5px 0x;
 }
 
-#feature_grid. {
+#feature_grid {
     background: #efefef;
     TOP:700px;LEFT:480px
     margin-top: 20 px
     padding: 10px 0px 5px 0x;
 }
 
-#photo_grid. {
+#photo_grid {
     background: #efefef;
     TOP:900px;LEFT:480px
     margin-top: 20 px

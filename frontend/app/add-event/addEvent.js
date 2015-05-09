@@ -27,7 +27,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addLocation = function () {
-            alert("Location set at " + $scope.latitude + ', ' + $scope.longitude);
+            alert ("Location set at " + $scope.latitude + ', ' + $scope.longitude);
             $scope.event.latitude = $scope.latitude;
             $scope.event.longitude = $scope.longitude;
             CheckScopeBeforeApply();
@@ -70,15 +70,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
     }]).
 
 
-    directive('myMap', ['Restangular', function (Restangular) {
+    directive('myMap',  ['Restangular', function (Restangular) {
         // directive link function
 
         var link = function ($scope) {
             var existingMarkers = [];//List of markers for existing events
 
-            //initialize the map itself.  Create var myLatlng and center the map there:
-            //in the future we'll get the geolocation thing to work...webkit browsers don't allow location from
-            //inside the file system.  It has to be from an http
             function initialize() {
 
                 var myLatlng = new google.maps.LatLng(40.7841809093, -73.9640808105);
@@ -91,21 +88,19 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     mapOptions);
 
 
+                // Restangular call to grab the location data for all existing events
+                Restangular.all('events').getList()
+                    .then(function (events) {
+                        events.forEach(function(ev) {
+                               setMarker(map, new google.maps.LatLng(ev.latitude, ev.longitude), ev.caption);
+                            })
+                    });
+
                 // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
                 google.maps.event.addListener(map, 'click', function (e) {
                     placeMarker(e.latLng, map);
                 });
             }
-
-            // Restangular call to grab the location data for all existing events
-            //Iteratively use setMarker function below to create the markers and populate the map
-            Restangular.all('events').getList()
-                .then(function (events) {
-                    events.forEach(function (ev) {
-                        setMarker(map, new google.maps.LatLng(ev.latitude, ev.longitude), ev.caption);
-                    })
-                });
-
 
             // setMarker function to create the marker for existing events
             function setMarker(map, position, content) {
@@ -116,12 +111,10 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
                 });
 
-                // add marker to array of existing event markers
-                existingMarkers.push(markersExisting);
 
+                existingMarkers.push(markersExisting); // add marker to array of existing event markers
 
                 //FYI, "event" here in the google.maps.event method call is javascript speak!
-                //This listener waits for a click event on a markersExisting marker. Pops up an info window.
                 google.maps.event.addListener(markersExisting, 'click', function () {
                     // close window if not undefined
                     if (infoWindow !== void 0) {
@@ -145,9 +138,9 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     draggable: true
                 });
 
-                //Add an event listener on the pin marker corresponding to the event we want to add.
+                //Add an event listener on the pin marker.  When clicked, spit out the lat and lng data
                 //Put latitude and longitude on scope....FYI, "event" here is javascript speak!
-                //Also, the dragend is an alternative to click...the event occurs when the pin drops!!!
+                //Also, the dragend is an alternative to click...the event occurs where the pin drops!!!
                 google.maps.event.addListener(addEventMarker, "dragend", function (event) {
                     var latitude = event.latLng.lat();
                     var longitude = event.latLng.lng();
