@@ -1,13 +1,21 @@
-<h1>Event:</h1>
-<h3><a href="/app/#/events/{{ event.id }}">{{ event.caption }}</a></h3>
-<img width="200"
-     ng-src="{{ event.picture }}">
-<p>{{ event.caption }}</p>
+<table id ="detailResults" border="1" style="width:100%">
+    <tr>
+        <th>Event:</th>
+        <th>Location:</th>
+        <th>Occured:</th>
+        <th>Tags:</th>
+    </tr>
 
-<h1>Where:</h1>
-<p>{{ event.latitude }}, {{ event.longitude }}</p>
-<h1>Tags:</h1>
-<li ng-repeat="tag in event.tags">{{ tag.name }}</li>
+    <tr>
 
+        <td><h3><a href="/app/#/events/{{ event.id }}">{{ event.caption }}</a></h3>
+        <img width="200" ng-src="{{ event.picture }}">
+        <p>{{ event.caption }}</p></td>
 
+        <td><p>{{ event.latitude }}, {{ event.longitude }}</p></td>
 
+        <td><p>{{ event.submitted_date_time }}</p></td>
+
+        <td><li ng-repeat="tag in event.tags">{{ tag.name }}</li></td>
+    </tr>
+</table>

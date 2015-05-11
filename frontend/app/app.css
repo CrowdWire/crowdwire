@@ -1,16 +1,28 @@
 /* app css stylesheet */
 
 body {
-    text-align: center;
+    text-align: left;
+}
+
+
+#crowd-wirelogo {
+
+    float: left
+    height: 100px;
+    width: 100%;
+    top: 10px;
+    position: fixed;
+
 }
 
 header {
     height: 210px;
-    background: url(media);
+    /*background: url();*/
     background-size:contain;
     width:100%;
     z-index: 10;
     position: fixed;
+    /*this needs to stay fixed.  Absolute will make it crawl up the page with everything else*/
 
 }
 
@@ -18,17 +30,20 @@ header {
 #banner {
 
     width: 100%;
-    height: 500px;
+    height: 900px;
+    z-index: 8;
     position: fixed;
-    top: 100px;
+    top: 150px;
+    bottom: 900px
     background: #707070;
 }
-
 
 #content {
     width: 100%;
     position: relative;
-    top: 400px;
+    top: 550px;
+    bottom: 900px
+    z-index: 10;
     background: #ebebeb;
     height: 1500px;
 }
@@ -36,7 +51,7 @@ header {
 /*this header class should be used for the header and drop logo...Trevor*/
 
 .header {
-    /*background-image: url();*/
+
     padding: 0px 0px 0px 0px;
     height: 100px;
     position: fixed;
@@ -143,6 +158,7 @@ html, body, .container-fluid, .site-background {
 }
 
 
+/*this is the CSS for the google maps*/
 
 #gmaps {
     height: 400px;
