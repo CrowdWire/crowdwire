@@ -18,15 +18,15 @@
     <input class="form-control" ng-model="tagText">
 </div>
 <button ng-click="addTag(tagText)" class="btn btn-xs btn-info">Add hashtags</button>
+<br>
 
 
 <br>
-<img class="img-responsive" ng-src="{{ event.picture }}">
-<div class="form-group">
-    <label>Event Photo:</label>
+<div class="form-group"><label>Event Photo:</label>
     <br>
-    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
-           onchange="angular.element(this).scope().addPhoto()"/>
+<img class="img-responsive" ng-src="{{ event.picture }}">
+<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+       onchange="angular.element(this).scope().addPhoto()"/>
 </div>
 
 

@@ -30,7 +30,6 @@ angular.module('myApp.addEvent', ['ngRoute'])
             alert ("Location set at " + $scope.latitude + ', ' + $scope.longitude);
             $scope.event.latitude = $scope.latitude;
             $scope.event.longitude = $scope.longitude;
-            CheckScopeBeforeApply();
         };
 
 
@@ -38,7 +37,8 @@ angular.module('myApp.addEvent', ['ngRoute'])
             if (tagText != null) {
                 var hashtag = {name: tagText};
                 $scope.event.tags.push(hashtag);
-                $scope.tagText = null
+                $scope.tagText = null;
+                CheckScopeBeforeApply();
             }
         };
 
@@ -56,7 +56,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
         $scope.addEvent = function () {
             Restangular.all('add-event').customPOST($scope.event).then(function () {
-                alert("You successfully added the event!" + " at " + $scope.event.location);
+                alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude);
                 document.getElementById('file').value = null;
                 CheckScopeBeforeApply();
                 //$scope.event.location = null;
@@ -67,10 +67,10 @@ angular.module('myApp.addEvent', ['ngRoute'])
             });
         };
 
-    }]).
+    }])
 
 
-    directive('myMap',  ['Restangular', function (Restangular) {
+    .directive('myMap',  ['Restangular', function (Restangular) {
         // directive link function
 
         var link = function ($scope) {
@@ -108,7 +108,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 var markersExisting = new google.maps.Marker({
                     position: position,
                     map: map,
-                    icon: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                    icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
 
 
@@ -151,10 +151,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 map.panTo(position);
             }
 
+            //Listen on the DOM... when window loads, initalize the map
             google.maps.event.addDomListener(window, 'load', initialize);
 
         };
         //Return the map and set the css id selector to #gmaps.
+        //Don't know what restrict and replace are doing here. Something DOM related
         return {
             //restrict: 'A',
             template: '<div id="gmaps"></div>',
