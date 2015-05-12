@@ -4,160 +4,55 @@ body {
     text-align: left;
 }
 
-
-#crowd-wirelogo {
-
-    float: left
-    height: 100px;
+.headerContent {
+    /*This CSS was made by Trevor on 11 May to display the header content. The header includes the home, add event,
+    and event feed buttons*/
     width: 100%;
-    top: 10px;
-    position: fixed;
+    height: auto;
+    margin: 0 auto;
+    background: #efefef;
 
 }
 
-header {
-    height: 210px;
-    /*background: url();*/
-    background-size:contain;
-    width:100%;
-    z-index: 10;
-    position: fixed;
-    /*this needs to stay fixed.  Absolute will make it crawl up the page with everything else*/
-
-}
+/*.headerContent a img {*/
+    /*width: 160px;*/
+    /*height: 80px;*/
+    /*margin: 0px auto;*/
+    /*display: block;*/
+/*}*/
 
 
-#banner {
-
-    width: 100%;
-    height: 900px;
-    z-index: 8;
-    position: fixed;
-    top: 150px;
-    bottom: 900px
-    background: #707070;
-}
-
-#content {
-    width: 100%;
-    position: relative;
-    top: 550px;
-    bottom: 900px
-    z-index: 10;
-    background: #ebebeb;
-    height: 1500px;
-}
-
-/*this header class should be used for the header and drop logo...Trevor*/
-
-.header {
-
-    padding: 0px 0px 0px 0px;
-    height: 100px;
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 50;
-}
-
-/*end of the new  parallax addition*/
-
-
-.menu {
-    list-style: none;
-    border-bottom: 0.1em solid black;
-    margin-bottom: 2em;
-    padding: 0 0 0.5em;
-}
-
-.menu:before {
-    content: "[";
-}
-
-.menu:after {
-    content: "]";
-}
-
-.menu > li {
-    display: inline;
-}
-
-.menu > li:before {
-    content: "|";
-    padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-    content: "";
-    padding: 0;
-}
-
-li {
-    display: inline;
-    padding: 5px;
-}
-
-html, body, .container-fluid, .site-background {
-    min-height: 100%;
-    height: 100%;
-    font-size: 18px;
-}
-
-.site-foreground {
-    background-color: #d5d5d5;
-    margin-top: 20px;
-    border-radius: 10px;
-}
-
-.btn-info {
-    color: #fff;
-    background-color: #68A6F1;
-    border-color: #46b8da;
-}
-
-.navbar {
-    margin-bottom: 0px;
-}
-
-.navbar-brand {
-    font-size: 22px;
-}
-
-.img-responsive {
-    width: 150px;
+.nav {
     height: 150px;
-    border-radius: 10px;
+    background: #efefef;
+
 }
 
-#location_grid {
-    background: #efefef;
-    TOP:300px;LEFT:480px
-    margin-top: 20 px
-    padding: 10px 0px 5px 0x;
- }
-
-#description_grid {
-    background: #efefef;
-    TOP:500px;LEFT:480px
-    margin-top: 20 px
-    padding: 10px 0px 5px 0x;
+.nav ul {
+    /*this will give additional traits to the ul in the nav section.  Added 12 May by Trevor*/
+    margin: 10px;
+    padding: 10px;
 }
 
-#feature_grid {
-    background: #efefef;
-    TOP:700px;LEFT:480px
-    margin-top: 20 px
-    padding: 10px 0px 5px 0x;
+.nav ul li {
+    /*this gets rid of the dots*/
+    list-style: none;
 }
 
-#photo_grid {
-    background: #efefef;
-    TOP:900px;LEFT:480px
-    margin-top: 20 px
-    padding: 10px 0px 5px 0x;
+.nav ul li a {
+    /*gets rid of the text decoration*/
+    text-decoration: none;
+    float: left;
+    /*by making it a block element we can now give it some padding*/
+    display: block;
+    padding: 10px 20px;
+    color: black;
+
 }
 
-
+.nav ul li a:hover {
+    color: white;
+}
 /*this is the CSS for the google maps*/
 
 #gmaps {
