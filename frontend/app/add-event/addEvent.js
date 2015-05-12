@@ -97,7 +97,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     });
 
                 // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
-                google.maps.event.addListener(map, 'click', function (e) {
+                google.maps.event.addListenerOnce(map, 'click', function (e) {
                     placeMarker(e.latLng, map);
                 });
             }
@@ -110,11 +110,10 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     map: map,
                     icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                 });
-
-
                 existingMarkers.push(markersExisting); // add marker to array of existing event markers
 
                 //FYI, "event" here in the google.maps.event method call is javascript speak!
+                //This listener will wait for the user to click an existing marker and popup an info window
                 google.maps.event.addListener(markersExisting, 'click', function () {
                     // close window if not undefined
                     if (infoWindow !== void 0) {
