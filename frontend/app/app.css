@@ -26,6 +26,13 @@ body {
     height: 150px;
     background: #efefef;
 
+
+#content {
+    width: 100%;
+    position: relative;
+    top: 400px;
+    background: #ebebeb;
+    height: 1500px;
 }
 
 .nav ul {
