@@ -97,7 +97,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     });
 
                 // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
-                google.maps.event.addListener(map, 'click', function (e) {
+                google.maps.event.addListenerOnce(map, 'click', function (e) {
                     placeMarker(e.latLng, map);
                 });
             }
