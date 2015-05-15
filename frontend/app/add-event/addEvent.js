@@ -4,10 +4,26 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/add-event', {
-            templateUrl: 'add-event/add-event.html',
-            controller: 'AddEventCtrl'
-        });
+        $routeProvider
+            .when('/add-event', {
+                templateUrl: 'add-event/add-event.html',
+                controller: 'AddEventCtrl'
+            })
+            .when('/add-event', {
+                templateUrl: 'add-event/add-event.html',
+                controller: 'EventsCtrl'
+            });
+    }])
+
+
+    .controller('EventsCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+
+
+        //i.e http://localhost:8001/events
+        Restangular.all('events').getList()
+            .then(function (events) {
+                $scope.events = events;
+            });
     }])
 
 
@@ -27,9 +43,14 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addLocation = function () {
-            alert ("Location set at " + $scope.latitude + ', ' + $scope.longitude);
+            alert("Location set at " + $scope.latitude + ', ' + $scope.longitude);
             $scope.event.latitude = $scope.latitude;
             $scope.event.longitude = $scope.longitude;
+        };
+
+
+        $scope.addAddress = function () {
+            $scope.event.address = $scope.address;
         };
 
 
@@ -55,11 +76,11 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
         $scope.addEvent = function () {
+            $scope.addLocation();
+            $scope.addAddress();
             Restangular.all('add-event').customPOST($scope.event).then(function () {
                 alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude);
                 document.getElementById('file').value = null;
-                CheckScopeBeforeApply();
-                //$scope.event.location = null;
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
             }, function () {
@@ -70,11 +91,10 @@ angular.module('myApp.addEvent', ['ngRoute'])
     }])
 
 
-    .directive('myMap',  ['Restangular', function (Restangular) {
+    .directive('myMap', ['Restangular', function (Restangular) {
         // directive link function
 
         var link = function ($scope) {
-            var existingMarkers = [];//List of markers for existing events
 
             function initialize() {
 
@@ -84,48 +104,55 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     center: myLatlng
                 };
                 //Create a new map with .css div id=gmaps and the mapOptions above
-                var map = new google.maps.Map(document.getElementById('gmaps'),
-                    mapOptions);
+                var map = new google.maps.Map(document.getElementById('gmaps'), mapOptions);
 
+
+                // setMarker function to create the marker for existing events
+                function setMarker(map, position, content) {
+                    var infoWindow;
+                    var markersExisting = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+                    });
+
+                    //FYI, "event" here in the google.maps.event method call is javascript speak!
+                    //This listener will wait for the user to click an existing marker and popup an info window
+                    google.maps.event.addListener(markersExisting, 'click', function () {
+                        // close window if not undefined
+                        if (infoWindow !== void 0) {
+                            infoWindow.close();
+                        }
+                        // create new window
+                        var infoWindowOptions = {
+                            content: content
+                        };
+                        infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+                        infoWindow.open(map, markersExisting);
+                    });
+                }
 
                 // Restangular call to grab the location data for all existing events
                 Restangular.all('events').getList()
                     .then(function (events) {
-                        events.forEach(function(ev) {
-                               setMarker(map, new google.maps.LatLng(ev.latitude, ev.longitude), ev.caption);
-                            })
+                        events.forEach(function (ev) {
+                            setMarker(map, new google.maps.LatLng(ev.latitude, ev.longitude), ev.caption);
+                        })
                     });
+
 
                 // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
                 google.maps.event.addListenerOnce(map, 'click', function (e) {
+                    scopeLatLng(e);
                     placeMarker(e.latLng, map);
                 });
-            }
+            }//End the initialize function for map
 
-            // setMarker function to create the marker for existing events
-            function setMarker(map, position, content) {
-                var infoWindow;
-                var markersExisting = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
-                });
-                existingMarkers.push(markersExisting); // add marker to array of existing event markers
-
-                //FYI, "event" here in the google.maps.event method call is javascript speak!
-                //This listener will wait for the user to click an existing marker and popup an info window
-                google.maps.event.addListener(markersExisting, 'click', function () {
-                    // close window if not undefined
-                    if (infoWindow !== void 0) {
-                        infoWindow.close();
-                    }
-                    // create new window
-                    var infoWindowOptions = {
-                        content: content
-                    };
-                    infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-                    infoWindow.open(map, markersExisting);
-                });
+            function scopeLatLng(e) {
+                var latitude = e.latLng.lat();
+                var longitude = e.latLng.lng();
+                $scope.latitude = latitude;
+                $scope.longitude = longitude;
             }
 
 
@@ -134,21 +161,37 @@ angular.module('myApp.addEvent', ['ngRoute'])
                 var addEventMarker = new google.maps.Marker({
                     position: position,
                     map: map,
-                    draggable: true
+                    draggable: true,
+                    animation: google.maps.Animation.DROP
                 });
 
-                //Add an event listener on the pin marker.  When clicked, spit out the lat and lng data
-                //Put latitude and longitude on scope....FYI, "event" here is javascript speak!
+                //Add an event listener on the pin marker.  When dragged, spit out the lat and lng data
                 //Also, the dragend is an alternative to click...the event occurs where the pin drops!!!
-                google.maps.event.addListener(addEventMarker, "dragend", function (event) {
-                    var latitude = event.latLng.lat();
-                    var longitude = event.latLng.lng();
-                    $scope.latitude = latitude;
-                    $scope.longitude = longitude;
-                    alert($scope.latitude + ', ' + $scope.longitude);
+                google.maps.event.addListener(addEventMarker, "dragend", function (e) {
+                    scopeLatLng(e);
+                    var centerPoint = addEventMarker.getPosition();
+                    map.panTo(centerPoint);
+                    getAddress(centerPoint);
                 });
+                getAddress(addEventMarker.getPosition());
                 map.panTo(position);
             }
+
+            //Geocoder function to take latitude and longitude and get formatted address
+            function getAddress(centerPoint) {
+                var lat, lng, address;
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({'latLng': centerPoint}, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        lat = centerPoint.lat();
+                        lng = centerPoint.lng();
+                        address = results[0].formatted_address;
+                        $scope.address = address;
+                        alert("Latitude: " + lat + "\nLongitude: " + lng + "\nAddress: " + address);
+                    }
+                });
+            }
+
 
             //Listen on the DOM... when window loads, initalize the map
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -158,6 +201,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
         //Don't know what restrict and replace are doing here. Something DOM related
         return {
             //restrict: 'A',
+            //this... (div id "gmaps) is what needs to be called for the CSS.
             template: '<div id="gmaps"></div>',
             //replace: true,
             link: link

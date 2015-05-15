@@ -11,7 +11,7 @@ angular.module('myApp.eventDetail', ['ngRoute'])
     }])
 
     .controller('EventDetailCtrl', ['$scope', '$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
-        $scope.eventId = $routeParams.eventId
+        $scope.eventId = $routeParams.eventId;
 
         //Fetch one event, with the ID taken from $routeParams. Put that event on scope
         Restangular.one('events', $scope.eventId).customGET()
@@ -20,16 +20,4 @@ angular.module('myApp.eventDetail', ['ngRoute'])
             }, function () {
                 alert("Something has gone horribly wrong...")
             });
-
-        //$scope.addPhoto = function () {
-        //    var file = document.getElementById('file').files[0],
-        //        reader = new FileReader();
-        //    reader.onload = function (e) {
-        //        $scope.event.picture = 'data:image/png;base64,' + btoa(e.target.result);
-        //        $scope.$apply();
-        //    };
-        //    reader.readAsBinaryString(file);
-        //};
-
-
     }]);
