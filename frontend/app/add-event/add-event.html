@@ -30,7 +30,7 @@
 <!--End of form-group div-->
 
 
-<div ng-controller="EventsCtrl">
+<div ng-controller="EventsCtrl as Feed">
     <h2>Search:</h2>
     <label>By Caption: <input ng-model="event.caption"></label>
     <label>By Location: <input ng-model="event.location"></label>
@@ -49,7 +49,7 @@
 
         <!--Could also just use 'event' instead of 'eventObj'.  This is for educational purposes, and to avoid confusion.... -->
 
-        <tr ng-repeat="eventObj in events | orderBy : 'submitted_date_time' : true | filter: event: strict">
+        <tr ng-repeat="eventObj in Feed.events | orderBy : 'submitted_date_time' : true">
             <td><a href="#/events/{{ eventObj.id }}"></a>
                 <img width="200" ng-src="{{ eventObj.picture }}"></td>
             <td><a href="#/events/{{ eventObj.id }}">

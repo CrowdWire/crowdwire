@@ -4,25 +4,26 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
+
         $routeProvider
             .when('/add-event', {
                 templateUrl: 'add-event/add-event.html',
-                controller: 'AddEventCtrl'
+                controller: 'AddEventCtrl',
+                controllerAs: 'AddEvent'
             })
-            .when('/add-event', {
-                templateUrl: 'add-event/add-event.html',
-                controller: 'EventsCtrl'
-            });
     }])
 
 
     .controller('EventsCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
-
+        var self = this;
         //i.e http://localhost:8001/events
         Restangular.all('events').getList()
             .then(function (events) {
-                $scope.events = events;
+                self.events = events;
+                console.log(events);
+            }, function (error){
+                console.log(error);
             });
     }])
 
@@ -200,10 +201,10 @@ angular.module('myApp.addEvent', ['ngRoute'])
         //Return the map and set the css id selector to #gmaps.
         //Don't know what restrict and replace are doing here. Something DOM related
         return {
-            //restrict: 'A',
+            restrict: 'EAC',
             //this... (div id "gmaps) is what needs to be called for the CSS.
             template: '<div id="gmaps"></div>',
-            //replace: true,
+            replace: true,
             link: link
         };
     }]);
