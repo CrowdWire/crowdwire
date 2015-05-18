@@ -72,3 +72,84 @@ body {
     height: 150px;
     border-radius: 10px;
 }
+
+.master {
+
+    height: 150px;
+    margin: 10px 10px 10px 10px;
+    background-image: url("media/new floral paisley background.jpg");
+    background-position: 20% center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #010101;
+    border: 1px;
+    /*These round the border edges*/
+    border-radius: 42px 42px 42px 42px;
+    -moz-border-radius: 42px 42px 42px 42px;
+    -webkit-border-radius: 42px 42px 42px 42px;
+    /*These control the shadow*/
+    -webkit-box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
+    box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
+    /*end of shadow contollers*/
+    padding: 2% 2% 2% 3%;
+}
+
+.row1_photo_text {
+    width: 100%;
+}
+
+.row_caption_box {
+    width: 100%;
+    margin-left: 11%;
+
+}
+
+.photobox {
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+
+.photobox img {
+    width: 100%;
+    height: 100%;
+    margin-right: 1%;
+}
+
+.caption_box {
+    /*background-color: #333;*/
+
+}
+
+.caption_row {
+    width: 100%;
+    margin: 1% 1% 1% 0%;
+}
+
+.caption_title_text {
+    margin: 2% 2% 2% 0%;
+    color: #7d7d7d
+
+}
+.caption_text_row {
+    /*background-color: #008000;*/
+    color: #b6b6b6;
+    margin: 0 12% 0 0;
+}
+
+.button_row {
+    background-color: rosybrown;
+}
+
+.button_1 {
+    background-color: aquamarine;
+}
+
+.button_2 {
+    background-color: hotpink;
+}
+
+.button_3 {
+    background-color: honeydew;
+}
