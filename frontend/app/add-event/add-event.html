@@ -32,10 +32,10 @@
 
 <div ng-controller="EventsCtrl as Feed">
     <h2>Search:</h2>
-    <label>By Caption: <input ng-model="event.caption"></label>
-    <label>By Location: <input ng-model="event.location"></label>
-    <!--<label>By Tags: <input ng-model="event.tags"></label>-->
-    <label>By Date: <input ng-model="event.submitted_date_time"></label><br>
+    <label>By Caption: <input ng-model="searchText.caption"></label>
+    <label>By Address: <input ng-model="searchText.address"></label>
+    <!--<label>By Tags: <input ng-model="searchText.tags"></label>-->
+    <label>By Date: <input ng-model="searchText.submitted_date_time"></label><br>
     <table id="searchObjResults" border="1">
         <tr>
             <th>Picture</th>
@@ -49,7 +49,7 @@
 
         <!--Could also just use 'event' instead of 'eventObj'.  This is for educational purposes, and to avoid confusion.... -->
 
-        <tr ng-repeat="eventObj in Feed.events | orderBy : 'submitted_date_time' : true">
+        <tr ng-repeat="eventObj in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">
             <td><a href="#/events/{{ eventObj.id }}"></a>
                 <img width="200" ng-src="{{ eventObj.picture }}"></td>
             <td><a href="#/events/{{ eventObj.id }}">
