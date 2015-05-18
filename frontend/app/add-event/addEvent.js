@@ -80,7 +80,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             $scope.addLocation();
             $scope.addAddress();
             Restangular.all('add-event').customPOST($scope.event).then(function () {
-                alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude);
+                if(!alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude)){window.location.reload();}
                 document.getElementById('file').value = null;
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
