@@ -129,12 +129,13 @@ body {
 
 .caption_title_text {
     margin: 2% 2% 2% 0%;
-    color: #7d7d7d
+    color: #b6b6b6;
+    font-weight: bold;
 
 }
 .caption_text_row {
     /*background-color: #008000;*/
-    color: #b6b6b6;
+    color: #7d7d7d;
     margin: 0 12% 0 0;
 }
 
