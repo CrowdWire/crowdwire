@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+@font-face {
+    font-family: Sears_Tower;
+    src: url(media/fonts/Sears_Tower.ttf);
+}
+
 .body {
     text-align: left;
     background-color: #4d4d4d;
@@ -187,6 +192,7 @@
     margin-left: 314px;
     margin-right: 700px;
     font-family: Sears_Tower;
+
 }
 
 .text_color_white {
