@@ -22,7 +22,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             .then(function (events) {
                 self.events = events;
                 console.log(events);
-            }, function (error){
+            }, function (error) {
                 console.log(error);
             });
     }])
@@ -35,12 +35,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
         };
 
 
-        //This function keeps $scope.$apply from being run if a digest is still open
-        function CheckScopeBeforeApply() {
-            if (!$scope.$$phase) {
-                $scope.$apply();
-            }
-        }
+        ////This function keeps $scope.$apply from being run if a digest is still open
+        //function CheckScopeBeforeApply() {
+        //    if (!$scope.$$phase) {
+        //        $scope.$apply();
+        //    }
+        //}
 
 
         $scope.addLocation = function () {
@@ -55,24 +55,23 @@ angular.module('myApp.addEvent', ['ngRoute'])
         };
 
 
-        $scope.addTag = function (tagText) {
-            if (tagText != null) {
-                var hashtag = {name: tagText};
-                $scope.event.tags.push(hashtag);
-                $scope.tagText = null;
-                CheckScopeBeforeApply();
-            }
-        };
-
-
         $scope.addPhoto = function () {
             var file = document.getElementById('file').files[0],
                 reader = new FileReader();
             reader.onload = function (e) {
                 $scope.event.picture = 'data:image/png;base64,' + btoa(e.target.result);
-                CheckScopeBeforeApply();
+                $scope.$apply();
             };
             reader.readAsBinaryString(file);
+        };
+
+
+        $scope.addTag = function (tagText) {
+            if (tagText != null) {
+                var hashtag = {name: tagText};
+                $scope.event.tags.push(hashtag);
+                $scope.tagText = null;
+            }
         };
 
 
@@ -80,7 +79,9 @@ angular.module('myApp.addEvent', ['ngRoute'])
             $scope.addLocation();
             $scope.addAddress();
             Restangular.all('add-event').customPOST($scope.event).then(function () {
-                if(!alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude)){window.location.reload();}
+                if (!alert("You successfully added the event" + " at " + $scope.event.latitude + ", " + $scope.event.longitude)) {
+                    window.location.reload();
+                }
                 document.getElementById('file').value = null;
                 $scope.event.picture = null;
                 $scope.event = {tags: []}
@@ -195,13 +196,13 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
             //Listen on the DOM... when window loads, initalize the map
-            google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addDomListener(window, 'load', initialize());
 
         };
         //Return the map and set the css id selector to #gmaps.
         //Don't know what restrict and replace are doing here. Something DOM related
         return {
-            restrict: 'EAC',
+            restrict: 'E',
             //this... (div id "gmaps) is what needs to be called for the CSS.
             template: '<div id="gmaps"></div>',
             replace: true,

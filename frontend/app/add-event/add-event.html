@@ -1,5 +1,6 @@
 <div class="form-group" ng-controller="AddEventCtrl">
 
+    <my-map></my-map>
     <!--<label>Location:</label>-->
     <!--<br>-->
     <!--<input type="button" onclick="angular.element(this).scope().addLocation()"/>Set Location-->
@@ -63,7 +64,7 @@
                 <!--{{ eventObj.submitted_date_time | date: 'medium' }}</a></td>-->
         <!--</tr>-->
     <!--</table>-->
-    <div class="master" ng-repeat="event in Feed.events">
+    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">
         <div  class="row1_photo_text">
 
             <div class="photobox" >
