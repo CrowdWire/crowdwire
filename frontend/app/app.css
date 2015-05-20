@@ -1,7 +1,8 @@
 /* app css stylesheet */
 
-body {
+.body {
     text-align: left;
+    background-color: #7d7d7d;
 }
 
 .headerContent {
@@ -10,8 +11,7 @@ body {
     width: 100%;
     height: auto;
     margin: 0 auto;
-    background: #efefef;
-
+    /*background: #efefef;*/
 }
 
 /*.headerContent a img {*/
@@ -23,8 +23,12 @@ body {
 
 
 .nav {
-    height: 150px;
-    background: #efefef;
+    height: 70px;
+    width: 100%;
+    top: 0px;
+    position: fixed;
+    background-color: #7d7d7d;
+    z-index: 1000;
 }
 
 #content {
@@ -32,7 +36,7 @@ body {
     position: relative;
     top: 400px;
     background: #ebebeb;
-    height: 1500px;
+    height: 1300px;
 }
 
 .nav ul {
@@ -52,9 +56,9 @@ body {
     float: left;
     /*by making it a block element we can now give it some padding*/
     display: block;
-    padding: 10px 20px;
+    padding: 5px 9%;
     color: black;
-
+    font-family: "Bookman", Times, serif;
 }
 
 .nav ul li a:hover {
@@ -71,6 +75,16 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+}
+
+#banner {
+    margin: 20px 0px;
+    line-height: 300%;
+    font-size: 20px;
+    font-color: white;
+    font-family: Bookman, Times, serif;
+    column-count: 3;
+    column-gap: 1px;
 }
 
 .master {
@@ -102,7 +116,6 @@ body {
 .row_caption_box {
     width: 100%;
     margin-left: 11%;
-
 }
 
 .photobox {
@@ -119,7 +132,6 @@ body {
 
 .caption_box {
     /*background-color: #333;*/
-
 }
 
 .caption_row {
@@ -153,4 +165,8 @@ body {
 
 .button_3 {
     background-color: honeydew;
+}
+
+.subtitle {
+    margin-width: 100%;
 }
