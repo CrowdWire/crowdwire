@@ -190,3 +190,8 @@
 .text_color_white {
     color: #ffffff;
 }
+
+.big_big {
+    background-image: url("media/big big.jpg");
+    background-position-height: 100%;
+}
