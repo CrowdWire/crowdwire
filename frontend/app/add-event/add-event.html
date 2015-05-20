@@ -16,10 +16,10 @@
     <br>
 
 
-    <!--<br><label>Event Photo:</label><br>-->
-    <!--<img class="img-responsive" ng-src="{{ event.picture }}">-->
-    <!--<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"-->
-           <!--onchange="angular.element(this).scope().addPhoto()"/>-->
+    <br><label>Event Photo:</label><br>
+    <img class="img-responsive" ng-src="{{ event.picture }}">
+    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+           onchange="angular.element(this).scope().addPhoto()"/>
 
 
     <br>
@@ -57,18 +57,18 @@
 
         <!--&lt;!&ndash;Could also just use 'event' instead of 'eventObj'.  This is for educational purposes, and to avoid confusion.... &ndash;&gt;-->
 
-        <!--<tr ng-repeat="eventObj in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">-->
-            <!--<td><a href="#/events/{{ eventObj.id }}"></a>-->
-                <!--<img width="200" ng-src="{{ eventObj.picture }}"></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{eventObj.caption}}</a></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.latitude }}, {{ eventObj.longitude }}</a></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.address }}</a></td>-->
-            <!--&lt;!&ndash;<td ng-repeat="e in eventObj.tags"><a href="#/events/{{ eventObj.id }}">{{e.name}}</a></td>&ndash;&gt;-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.submitted_date_time | date: 'medium' }}</a></td>-->
+        <tr ng-repeat="eventObj in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">
+            <td><a href="#/events/{{ eventObj.id }}"></a>
+                <img width="200" ng-src="{{ eventObj.picture }}"></td>
+            <td><a href="#/events/{{ eventObj.id }}">
+                {{eventObj.caption}}</a></td>
+            <td><a href="#/events/{{ eventObj.id }}">
+                {{ eventObj.latitude }}, {{ eventObj.longitude }}</a></td>
+            <td><a href="#/events/{{ eventObj.id }}">
+                {{ eventObj.address }}</a></td>
+            <!--<td ng-repeat="e in eventObj.tags"><a href="#/events/{{ eventObj.id }}">{{e.name}}</a></td>-->
+            <td><a href="#/events/{{ eventObj.id }}">
+                {{ eventObj.submitted_date_time | date: 'medium' }}</a></td>
         <!--</tr>-->
     <!--</table>-->
     <div class="master" ng-repeat="event in Feed.events">
