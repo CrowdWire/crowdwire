@@ -97,10 +97,11 @@
 
     height: 150px;
     margin: 10px 10px 10px 10px;
-    background-image: url("media/new floral paisley background.jpg");
+    background-image: url("media/new feed II.jpg");
     background-position: 20% center;
-    background-repeat: no-repeat;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-color: #010101;
     border: 1px;
     /*These round the border edges*/
@@ -108,9 +109,9 @@
     -moz-border-radius: 42px 42px 42px 42px;
     -webkit-border-radius: 42px 42px 42px 42px;
     /*These control the shadow*/
-    -webkit-box-shadow: 0px 0px 23px -5px rgba(245,240,245,1);
-    -moz-box-shadow: 0px 0px 23px -5px rgba(245,240,245,1);
-    box-shadow: 0px 0px 23px -5px rgba(245,240,245,1);
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
     /*end of shadow contollers*/
     padding: 2% 2% 2% 3%;
 }
@@ -192,6 +193,7 @@
 }
 
 .big_big {
-    background-image: url("media/big big.jpg");
-    background-position-height: 100%;
+  background-image: url("media/big big.jpg");
+  background-position-y: 1560px;
+  background-position-x: 1490px;
 }
