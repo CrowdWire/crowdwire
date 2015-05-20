@@ -1,7 +1,13 @@
 /* app css stylesheet */
 
-body {
+@font-face {
+    font-family: Sears_Tower;
+    src: url(media/fonts/Sears_Tower.ttf);
+}
+
+.body {
     text-align: left;
+    background-color: #4d4d4d;
 }
 
 .headerContent {
@@ -10,8 +16,12 @@ body {
     width: 100%;
     height: auto;
     margin: 0 auto;
-    background: #efefef;
 
+    /*background: #efefef;*/
+}
+
+.bullet_borders {
+    border: 1px solid #000000;
 }
 
 /*.headerContent a img {*/
@@ -23,8 +33,13 @@ body {
 
 
 .nav {
-    height: 150px;
-    background: #efefef;
+    height: 70px;
+    width: 100%;
+    top: 0px;
+    position: fixed;
+    background-color: #4d4d4d;
+    z-index: 1000;
+    border: 1px solid #000000;
 }
 
 #content {
@@ -32,7 +47,7 @@ body {
     position: relative;
     top: 400px;
     background: #ebebeb;
-    height: 1500px;
+    height: 1300px;
 }
 
 .nav ul {
@@ -52,9 +67,9 @@ body {
     float: left;
     /*by making it a block element we can now give it some padding*/
     display: block;
-    padding: 10px 20px;
+    padding: 5px 9%;
     color: black;
-
+    font-family: "Bookman", Times, serif;
 }
 
 .nav ul li a:hover {
@@ -66,21 +81,32 @@ body {
     height: 400px;
 }
 
-
 .img-responsive {
     width: 150px;
     height: 150px;
     border-radius: 10px;
 }
 
+.banner {
+    margin: 20px 0px;
+    line-height: 400%;
+    font-size: 25px;
+    font-color: #ffffff;
+    background-color: #4d4d4d;
+    font-family: Bookman, Times, serif;
+    column-count: 3;
+    column-gap: 1px;
+}
+
 .master {
 
     height: 150px;
     margin: 10px 10px 10px 10px;
-    background-image: url("media/new floral paisley background.jpg");
+    background-image: url("media/new feed II.jpg");
     background-position: 20% center;
-    background-repeat: no-repeat;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-color: #010101;
     border: 1px;
     /*These round the border edges*/
@@ -88,9 +114,9 @@ body {
     -moz-border-radius: 42px 42px 42px 42px;
     -webkit-border-radius: 42px 42px 42px 42px;
     /*These control the shadow*/
-    -webkit-box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
-    -moz-box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
-    box-shadow: 0px 0px 77px 1px rgba(255,255,255,1);
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
     /*end of shadow contollers*/
     padding: 2% 2% 2% 3%;
 }
@@ -102,7 +128,6 @@ body {
 .row_caption_box {
     width: 100%;
     margin-left: 11%;
-
 }
 
 .photobox {
@@ -119,7 +144,6 @@ body {
 
 .caption_box {
     /*background-color: #333;*/
-
 }
 
 .caption_row {
@@ -129,13 +153,15 @@ body {
 
 .caption_title_text {
     margin: 2% 2% 2% 0%;
-    color: #7d7d7d
+    color: #ffffff;
+    font-weight: bold;
 
 }
 .caption_text_row {
     /*background-color: #008000;*/
-    color: #b6b6b6;
+    color: #ffffff;
     margin: 0 12% 0 0;
+    font: 10px;
 }
 
 .button_row {
@@ -152,4 +178,34 @@ body {
 
 .button_3 {
     background-color: honeydew;
+}
+
+.subtitle {
+    margin-width: 100%;
+}
+
+.color {
+    background-color: #4d4d4d;
+}
+
+.body_text_color_white {
+    color: #ffffff;
+    margin-left: 314px;
+    margin-right: 700px;
+    font-family: Sears_Tower;
+
+}
+
+.text_color_white {
+    color: #ffffff;
+}
+
+.big_big {
+  background-image: url("media/big big.jpg");
+  background-position-y: 1560px;
+  background-position-x: 1490px;
+}
+
+.title_case {
+    font-size: 50px;
 }
