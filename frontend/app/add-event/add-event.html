@@ -15,12 +15,14 @@
     <br>
 
 
-    <br><label>Event Photo:</label><br>
-    <img class="img-responsive" ng-src="{{ event.picture }}">
-    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
-           onchange="angular.element(this).scope().addPhoto()"/>
+    <!--<br><label>Event Photo:</label><br>-->
+    <!--<img class="img-responsive" ng-src="{{ event.picture }}">-->
+    <!--<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"-->
+           <!--onchange="angular.element(this).scope().addPhoto()"/>-->
 
-
+    <br>
+    <br>
+    <br>
     <br>
     <button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-right">
         Submit to Journal
@@ -36,6 +38,10 @@
     <label>By Address: <input ng-model="searchText.address"></label>
     <!--<label>By Tags: <input ng-model="searchText.tags"></label>-->
     <label>By Date: <input ng-model="searchText.submitted_date_time"></label><br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!--<table id="searchObjResults" border="1">-->
         <!--<tr>-->
             <!--<th>Picture</th>-->
