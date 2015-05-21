@@ -29,7 +29,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .controller('AddEventCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
-
+        $scope.numEventsDisplayed = 3;
         $scope.event = {
             tags: []
         };
@@ -66,13 +66,13 @@ angular.module('myApp.addEvent', ['ngRoute'])
         };
 
 
-        $scope.addTag = function (tagText) {
-            if (tagText != null) {
-                var hashtag = {name: tagText};
-                $scope.event.tags.push(hashtag);
-                $scope.tagText = null;
-            }
-        };
+        //$scope.addTag = function (tagText) {
+        //    if (tagText != null) {
+        //        var hashtag = {name: tagText};
+        //        $scope.event.tags.push(hashtag);
+        //        $scope.tagText = null;
+        //    }
+        //};
 
 
         $scope.addEvent = function () {

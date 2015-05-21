@@ -6,14 +6,16 @@
     <!--<input type="button" onclick="angular.element(this).scope().addLocation()"/>Set Location-->
 
 
-    <br><label>Caption:</label><br>
+    <br><label class="text_color_white">Caption:</label><br>
     <textarea class="form-control" ng-model="event.caption"></textarea>
 
 
-    <label>Tags:</label><br>
-    <input class="form-control" ng-model="tagText">
-    <button ng-click="addTag(tagText)" class="btn btn-xs btn-info">Add hashtags</button>
-    <br>
+    <!--<br>-->
+    <!--<label class="text_color_white">Tags:</label><br>-->
+    <!--<input class="form-control" ng-model="tagText">-->
+    <!--<br>-->
+    <!--<button ng-click="addTag(tagText)" class="btn btn-xs btn-info">Add hashtags</button>-->
+    <!--<br>-->
 
 
     <br><label>Event Photo:</label><br>
@@ -23,20 +25,27 @@
 
 
     <br>
-    <button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-right">
+    <br>
+    <button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-left">
         Submit to Journal
     </button>
-
+    <br>
+    <br>
+    <br>
 </div>
 <!--End of form-group div-->
 
 
 <div ng-controller="EventsCtrl as Feed">
-    <h2>Search:</h2>
-    <label>By Caption: <input ng-model="searchText.caption"></label>
-    <label>By Address: <input ng-model="searchText.address"></label>
+    <h2 class="text_color_white">Search:</h2><br>
+    <label class="text_color_white">By Caption:</label><input ng-model="searchText.caption">
+    <label class="text_color_white">By Address:</label><input ng-model="searchText.address">
     <!--<label>By Tags: <input ng-model="searchText.tags"></label>-->
-    <label>By Date: <input ng-model="searchText.submitted_date_time"></label><br>
+    <label class="text_color_white">By Date:</label><input ng-model="searchText.submitted_date_time"><br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!--<table id="searchObjResults" border="1">-->
         <!--<tr>-->
             <!--<th>Picture</th>-->
@@ -64,7 +73,7 @@
                 <!--{{ eventObj.submitted_date_time | date: 'medium' }}</a></td>-->
         <!--</tr>-->
     <!--</table>-->
-    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">
+    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true | limitTo : numEventsDisplayed">
         <div  class="row1_photo_text">
 
             <div class="photobox" >
@@ -75,11 +84,11 @@
                 <div class="col-sm-10 caption_box">
                     <div class="caption_row">
                         <div class="col-sm-100 caption_title_text">
-                          <h3>{{ event.address }}</h3>
+                          <p>{{ event.caption }}</p>
                         </div>
                     </div>
                     <div class="caption_text_row">
-                        <p>{{ event.caption }}</p>
+                        <p>{{ event.address }}</p>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ angular.module('myApp', [
     'restangular'
 ]).
     config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
-        $routeProvider.otherwise({redirectTo: '/events'});
+        $routeProvider.otherwise({redirectTo: '/add-event'});
 
         RestangularProvider.setBaseUrl('http://localhost:8001') //Prepend for API calls
     }]);
