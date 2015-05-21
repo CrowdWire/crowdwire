@@ -29,7 +29,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .controller('AddEventCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
-
+        $scope.numEventsDisplayed = 3;
         $scope.event = {
             tags: []
         };
