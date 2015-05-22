@@ -209,3 +209,7 @@
 .title_case {
     font-size: 50px;
 }
+
+body > div.site-background.color > div > div > div.form-group.ng-scope > textarea{
+    width: 500px;
+}
