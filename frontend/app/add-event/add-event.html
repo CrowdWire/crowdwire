@@ -20,8 +20,8 @@
 
     <br><label>Event Photo:</label><br>
     <img class="img-responsive" ng-src="{{ event.picture }}">
-    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
-           onchange="angular.element(this).scope().addPhoto()"/>
+    <span class="btn btn-file">Upload<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+           onchange="angular.element(this).scope().addPhoto()"/></span>
 
 
     <br>

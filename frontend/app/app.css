@@ -25,12 +25,11 @@
 }
 
 /*.headerContent a img {*/
-    /*width: 160px;*/
-    /*height: 80px;*/
-    /*margin: 0px auto;*/
-    /*display: block;*/
+/*width: 160px;*/
+/*height: 80px;*/
+/*margin: 0px auto;*/
+/*display: block;*/
 /*}*/
-
 
 .nav {
     height: 70px;
@@ -75,6 +74,7 @@
 .nav ul li a:hover {
     color: white;
 }
+
 /*this is the CSS for the google maps*/
 
 #gmaps {
@@ -114,9 +114,9 @@
     -moz-border-radius: 42px 42px 42px 42px;
     -webkit-border-radius: 42px 42px 42px 42px;
     /*These control the shadow*/
-    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     /*end of shadow contollers*/
     padding: 2% 2% 2% 3%;
 }
@@ -157,6 +157,7 @@
     font-weight: bold;
 
 }
+
 .caption_text_row {
     /*background-color: #008000;*/
     color: #ffffff;
@@ -201,15 +202,39 @@
 }
 
 .big_big {
-  background-image: url("media/big big.jpg");
-  background-position-y: 1560px;
-  background-position-x: 1490px;
+    background-image: url("media/big big.jpg");
+    background-position-y: 1560px;
+    background-position-x: 1490px;
 }
 
 .title_case {
     font-size: 50px;
 }
 
-body > div.site-background.color > div > div > div.form-group.ng-scope > textarea{
+body > div.site-background.color > div > div > div.form-group.ng-scope {
+    text-align: center;
+    align-content: center;
+    font-size: 18px;
+    background-color: #3b3b3b;
+    color: #d5d5d5;
+    border-radius: 5px;
+    padding: inherit;
+    padding-top: 1px;
+    margin-top: 30px;
+}
+
+body > div.site-background.color > div > div > div.form-group.ng-scope > textarea {
     width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body > div.site-background.color > div > div > div.form-group.ng-scope > img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#file{
+    width: 95px;
+    overflow:hidden;
 }
