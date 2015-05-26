@@ -1,13 +1,23 @@
 /* app css stylesheet */
 
 @font-face {
-    font-family: Sears_Tower;
-    src: url(media/fonts/Sears_Tower.ttf);
-}
+    font-family: 'sears_towerregular';
+    src: url('media/fonts/sears_tower-webfont.eot');
+    src: url('media/fonts/sears_tower-webfont.eot?#iefix') format('embedded-opentype'),
+         url('media/fonts/sears_tower-webfont.woff2') format('woff2'),
+         url('media/fonts/sears_tower-webfont.woff') format('woff'),
+         url('media/fonts/Sears_Tower.ttf') format('truetype'),
+         url('media/fonts/sears_tower-webfont.svg#sears_towerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
 .body {
     text-align: left;
-    background-color: #4d4d4d;
+    background-color: transparent;
+    background-image: url("media/wallpaper floral paisley lighter.jpg") ;
+    background-size: contain;
+    z-index: ;
 }
 
 .headerContent {
@@ -66,13 +76,15 @@
     float: left;
     /*by making it a block element we can now give it some padding*/
     display: block;
-    padding: 5px 9%;
-    color: black;
+    padding: 5px 5%;
+    color: #dbdbdb;
     font-family: "Bookman", Times, serif;
 }
 
 .nav ul li a:hover {
-    color: white;
+    background: #585858;
+    color: #ffffff;
+
 }
 
 /*this is the CSS for the google maps*/
@@ -88,14 +100,16 @@
 }
 
 .banner {
-    margin: 20px 0px;
+    margin: 0px 0px;
+    margin-top: 20px;
     line-height: 400%;
     font-size: 25px;
-    font-color: #ffffff;
-    background-color: #4d4d4d;
+    color: #ffffff;
+    background-color: transparent;
     font-family: Bookman, Times, serif;
     column-count: 3;
     column-gap: 1px;
+    z-index: 0;
 }
 
 .master {
@@ -106,7 +120,7 @@
     background-position: 20% center;
     background-size: contain;
     background-repeat: no-repeat;
-    background-size: 100%;
+    /*background-size: 100%;*/
     background-color: #010101;
     border: 1px;
     /*These round the border edges*/
@@ -183,6 +197,7 @@
 
 .subtitle {
     margin-width: 100%;
+    background-color: transparent;
 }
 
 .color {
@@ -193,22 +208,29 @@
     color: #ffffff;
     margin-left: 314px;
     margin-right: 700px;
-    font-family: Sears_Tower;
+    min-width: 526px;
+    font-family: sears_towerregular;
 
 }
 
 .text_color_white {
     color: #ffffff;
+    position: relative;
+    background-color: transparent;
 }
 
 .big_big {
     background-image: url("media/big big.jpg");
     background-position-y: 1560px;
     background-position-x: 1490px;
+    background-size: 75%;
+    background-attachment: fixed;
+    z-index: 1;
+
 }
 
 .title_case {
-    font-size: 50px;
+    font-size: 38px;
 }
 
 body > div.site-background.color > div > div > div.form-group.ng-scope {
@@ -238,3 +260,4 @@ body > div.site-background.color > div > div > div.form-group.ng-scope > img {
     width: 95px;
     overflow:hidden;
 }
+
