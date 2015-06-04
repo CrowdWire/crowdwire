@@ -58,11 +58,18 @@
 /*This is for the enter button*/
 
 .enter {
-	background: url(../../media/enterbutton.jpg) no-repeat top center;
-    height: 100px;
-    width: 100px;
-	margin-top: 550px;
-    -moz-box-shadow: 0px 0px 12px #faf2fa;
-    -webkit-box-shadow: 0px 0px 12px #faf2fa;
-    box-shadow: 0px 0px 12px #faf2fa;
+	/*background: url(../../media/enterbutton.jpg) no-repeat center;*/
+    height: 90px;
+    width: 275px;
+	-moz-box-shadow: 0px 0px 30px #939393;
+    -webkit-box-shadow: 0px 0px 30px #939393;
+    box-shadow: 0px 0px 30px #939393;
+    left: 164%;
+    position: relative;
+}
+
+.button_center {
+    text-align: center;
+    display: inline-block;
+    margin-top: 40%;
 }
