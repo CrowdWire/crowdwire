@@ -6,42 +6,6 @@
     <!--<input type="button" onclick="angular.element(this).scope().addLocation()"/>Set Location-->
 
 
-    <div ng-controller="AccordionDemoCtrl">
-        <p>
-            <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">Toggle last panel</button>
-            <button class="btn btn-default btn-sm" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable /
-                Disable first panel
-            </button>
-        </p>
-
-        <label class="checkbox">
-            <input type="checkbox" ng-model="oneAtATime">
-            Open only one at a time
-        </label>
-        <accordion close-others="oneAtATime">
-            <accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen"
-                             is-disabled="status.isFirstDisabled">
-                This content is straight in the template.
-            </accordion-group>
-            <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-                {{group.content}}
-            </accordion-group>
-            <accordion-group heading="Dynamic Body Content">
-                <p>The body of the accordion group grows to fit the contents</p>
-                <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
-                <div ng-repeat="item in items">{{item}}</div>
-            </accordion-group>
-            <accordion-group is-open="status.open">
-                <accordion-heading>
-                    I can have markup, too! <i class="pull-right glyphicon"
-                                               ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                </accordion-heading>
-                This is just some content to illustrate fancy headings.
-            </accordion-group>
-        </accordion>
-    </div>
-
-
     <br><label class="text_color_white">Caption:</label><br>
     <textarea class="form-control" ng-model="event.caption" placeholder="Caption"></textarea>
 
@@ -56,9 +20,8 @@
 
     <br><label>Event Photo:</label><br>
     <img class="img-responsive" ng-src="{{ event.picture }}">
-    <span class="btn btn-file">Upload<input type="file" id="file" name="file"
-                                            accept="image/gif, image/x-png, image/jpeg"
-                                            onchange="angular.element(this).scope().addPhoto()"/></span>
+    <span class="btn btn-file">Upload<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+           onchange="angular.element(this).scope().addPhoto()"/></span>
 
 
     <br>
@@ -84,11 +47,10 @@
     <br>
 
 
-    <div class="master"
-         ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true | limitTo : numEventsDisplayed">
-        <div class="row1_photo_text">
+    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true | limitTo : numEventsDisplayed">
+        <div  class="row1_photo_text">
 
-            <div class="photobox">
+            <div class="photobox" >
                 <img ng-src="{{ event.picture }}">
             </div>
 
@@ -96,7 +58,7 @@
                 <div class="col-sm-10 caption_box">
                     <div class="caption_row">
                         <div class="col-sm-100 caption_title_text">
-                            <a ng-href="#/events/{{ event.id }}"><p class="text_color_white">{{ event.caption }}</p></a>
+                         <a ng-href="#/events/{{ event.id }}"><p class="text_color_white">{{ event.caption }}</p></a>
                         </div>
                     </div>
                     <div class="caption_text_row">

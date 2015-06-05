@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.addEvent', ['ngRoute', 'ui.bootstrap'])
+angular.module('myApp.addEvent', ['ngRoute'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
