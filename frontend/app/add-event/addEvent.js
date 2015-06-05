@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.addEvent', ['ngRoute'])
+angular.module('myApp.addEvent', ['ngRoute', 'ui.bootstrap'])
 
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -93,6 +93,33 @@ angular.module('myApp.addEvent', ['ngRoute'])
         };
 
     }])
+
+    .controller('AccordionDemoCtrl', function ($scope) {
+        $scope.oneAtATime = true;
+
+        $scope.groups = [
+            {
+                title: 'Dynamic Group Header - 1',
+                content: 'Dynamic Group Body - 1'
+            },
+            {
+                title: 'Dynamic Group Header - 2',
+                content: 'Dynamic Group Body - 2'
+            }
+        ];
+
+        $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+        $scope.addItem = function () {
+            var newItemNo = $scope.items.length + 1;
+            $scope.items.push('Item ' + newItemNo);
+        };
+
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false
+        };
+    })
 
 
     .directive('myMap', ['Restangular', function (Restangular) {
