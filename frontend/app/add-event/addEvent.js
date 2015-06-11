@@ -25,11 +25,13 @@ angular.module('myApp.addEvent', ['ngRoute'])
             }, function (error) {
                 console.log(error);
             });
+
+
     }])
 
 
     .controller('AddEventCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
-
+        $scope.numEventsDisplayed = 10;
         $scope.event = {
             tags: []
         };
@@ -92,24 +94,69 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
     }])
 
+    .controller('AccordionDemoCtrl', function ($scope) {
+        $scope.oneAtATime = true;
+
+        $scope.groups = [
+            {
+                title: 'Dynamic Group Header - 1',
+                content: 'Dynamic Group Body - 1'
+            },
+            {
+                title: 'Dynamic Group Header - 2',
+                content: 'Dynamic Group Body - 2'
+            }
+        ];
+
+        $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+        $scope.addItem = function () {
+            var newItemNo = $scope.items.length + 1;
+            $scope.items.push('Item ' + newItemNo);
+        };
+
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false
+        };
+    })
+
 
     .directive('myMap', ['Restangular', function (Restangular) {
-        // directive link function
 
         var link = function ($scope) {
+            var oldMarker;//This represents the previously dropped pin, so that a click event will drop a new one..see placeMarker()
 
             function initialize() {
 
-                var myLatlng = new google.maps.LatLng(40.7841809093, -73.9640808105);
+                var myLatlng1 = new google.maps.LatLng(30, 30);
                 var mapOptions = {
-                    zoom: 7,
-                    center: myLatlng
+                    zoom: 16,
+                    center: myLatlng1,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
                 //Create a new map with .css div id=gmaps and the mapOptions above
                 var map = new google.maps.Map(document.getElementById('gmaps'), mapOptions);
 
+                //If location works, get current location and set NEW map based on that...otherwise map will be centered on (30, 30)
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        map.setCenter(initialLocation);
+                        new google.maps.Marker({
+                            position: initialLocation,
+                            map: map,
+                            icon: 'http://www.googlemapsmarkers.com/v1/36454f/'
+                        });
+                    });
+                }
 
-                // setMarker function to create the marker for existing events
+                else {
+                    map.setCenter(myLatlng1);
+                }
+
+
+                // setMarker function to create the marker for existing events. Restangular call below uses this to place pins
                 function setMarker(map, position, content) {
                     var infoWindow;
                     var markersExisting = new google.maps.Marker({
@@ -118,7 +165,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                         icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png'
                     });
 
-                    //FYI, "event" here in the google.maps.event method call is javascript speak!
+
                     //This listener will wait for the user to click an existing marker and popup an info window
                     google.maps.event.addListener(markersExisting, 'click', function () {
                         // close window if not undefined
@@ -132,7 +179,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
                         infoWindow = new google.maps.InfoWindow(infoWindowOptions);
                         infoWindow.open(map, markersExisting);
                     });
-                }
+                }//END setMarker()
 
                 // Restangular call to grab the location data for all existing events
                 Restangular.all('events').getList()
@@ -144,19 +191,19 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 
                 // When the map is clicked on, call the placeMarker function (to add a new marker, of course)
-                google.maps.event.addListenerOnce(map, 'click', function (e) {
+                google.maps.event.addListener(map, 'click', function (e) {
                     scopeLatLng(e);
                     placeMarker(e.latLng, map);
                 });
             }//End the initialize function for map
 
+            //PUt latitude and longitude on scope
             function scopeLatLng(e) {
                 var latitude = e.latLng.lat();
                 var longitude = e.latLng.lng();
                 $scope.latitude = latitude;
                 $scope.longitude = longitude;
             }
-
 
             //Create the pin marker itself, and set its characteristics
             function placeMarker(position, map) {
@@ -166,6 +213,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
                     draggable: true,
                     animation: google.maps.Animation.DROP
                 });
+
+                if (oldMarker != undefined) {
+                    oldMarker.setMap(null);
+                }
+                oldMarker = addEventMarker;
+                map.setCenter(position);
 
                 //Add an event listener on the pin marker.  When dragged, spit out the lat and lng data
                 //Also, the dragend is an alternative to click...the event occurs where the pin drops!!!

@@ -11,6 +11,6 @@ angular.module('myApp', [
 ]).
     config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.otherwise({redirectTo: '/add-event'});
-
-        RestangularProvider.setBaseUrl('/api');//Prepend for API calls
+        RestangularProvider.setBaseUrl('/api'); //Prepend for API calls
+        RestangularProvider.setRequestSuffix('/');
     }]);

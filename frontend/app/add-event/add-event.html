@@ -7,7 +7,7 @@
 
 
     <br><label class="text_color_white">Caption:</label><br>
-    <textarea class="form-control" ng-model="event.caption"></textarea>
+    <textarea class="form-control" ng-model="event.caption" placeholder="Caption"></textarea>
 
 
     <!--<br>-->
@@ -20,13 +20,13 @@
 
     <br><label>Event Photo:</label><br>
     <img class="img-responsive" ng-src="{{ event.picture }}">
-    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
-           onchange="angular.element(this).scope().addPhoto()"/>
+    <span class="btn btn-file">Upload<input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+           onchange="angular.element(this).scope().addPhoto()"/></span>
 
 
     <br>
     <br>
-    <button ng-click="addEvent()" class="btn btn-md btn-success glyphicon glyphicon-floppy-disk pull-left">
+    <button ng-click="addEvent()" class="btn btn-default">
         Submit to Journal
     </button>
     <br>
@@ -40,51 +40,25 @@
     <h2 class="text_color_white">Search:</h2><br>
     <label class="text_color_white">By Caption:</label><input ng-model="searchText.caption">
     <label class="text_color_white">By Address:</label><input ng-model="searchText.address">
-    <!--<label>By Tags: <input ng-model="searchText.tags"></label>-->
     <label class="text_color_white">By Date:</label><input ng-model="searchText.submitted_date_time"><br>
     <br>
     <br>
     <br>
     <br>
-    <!--<table id="searchObjResults" border="1">-->
-        <!--<tr>-->
-            <!--<th>Picture</th>-->
-            <!--<th>Caption</th>-->
-            <!--<th>Location</th>-->
-            <!--<th>Address</th>-->
-            <!--&lt;!&ndash;<th>Tags</th>&ndash;&gt;-->
-            <!--<th>Date Submitted</th>-->
 
-        <!--</tr>-->
 
-        <!--&lt;!&ndash;Could also just use 'event' instead of 'eventObj'.  This is for educational purposes, and to avoid confusion.... &ndash;&gt;-->
-
-        <!--<tr ng-repeat="eventObj in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">-->
-            <!--<td><a href="#/events/{{ eventObj.id }}"></a>-->
-                <!--<img width="200" ng-src="{{ eventObj.picture }}"></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{eventObj.caption}}</a></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.latitude }}, {{ eventObj.longitude }}</a></td>-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.address }}</a></td>-->
-            <!--&lt;!&ndash;<td ng-repeat="e in eventObj.tags"><a href="#/events/{{ eventObj.id }}">{{e.name}}</a></td>&ndash;&gt;-->
-            <!--<td><a href="#/events/{{ eventObj.id }}">-->
-                <!--{{ eventObj.submitted_date_time | date: 'medium' }}</a></td>-->
-        <!--</tr>-->
-    <!--</table>-->
-    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true">
+    <div class="master" ng-repeat="event in Feed.events | filter:searchText | orderBy : 'submitted_date_time' : true | limitTo : numEventsDisplayed">
         <div  class="row1_photo_text">
 
             <div class="photobox" >
-                <img src="{{ event.picture }}">
+                <img ng-src="{{ event.picture }}">
             </div>
 
             <div class="row_caption_box">
                 <div class="col-sm-10 caption_box">
                     <div class="caption_row">
                         <div class="col-sm-100 caption_title_text">
-                          <p>{{ event.caption }}</p>
+                         <a ng-href="#/events/{{ event.id }}"><p class="text_color_white">{{ event.caption }}</p></a>
                         </div>
                     </div>
                     <div class="caption_text_row">
