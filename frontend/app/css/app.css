@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: Sears_Tower;
-    src: url(media/fonts/Sears_Tower.ttf);
+    src: url(../images/fonts/Sears_Tower.ttf);
 }
 
 .body {
@@ -88,10 +88,10 @@
 }
 
 .banner {
-    margin: 20px 0px;
+    margin: 20px 0;
     line-height: 400%;
     font-size: 25px;
-    font-color: #ffffff;
+    color: #ffffff;
     background-color: #4d4d4d;
     font-family: Bookman, Times, serif;
     column-count: 3;
@@ -102,7 +102,7 @@
 
     height: 150px;
     margin: 10px 10px 10px 10px;
-    background-image: url("media/new feed II.jpg");
+    background-image: url("../images/new%20feed%20II.jpg");
     background-position: 20% center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -202,7 +202,7 @@
 }
 
 .big_big {
-  background-image: url("media/big_big.jpg");
+  background-image: url("../images/big_big.jpg");
   background-position-y: 1560px;
   background-position-x: 1490px;
 }
